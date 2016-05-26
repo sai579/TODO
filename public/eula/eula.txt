@@ -32,3 +32,5 @@ CONTACT
 Should you have any questions concerning this EULA, or if you desire to contact HPS for any reason, please write: Heartland Payment Systems, 90 Nassau Street, Princeton, NJ 08452.  Attention:  Legal. 
 Status API Training Shop Blog About
 © 2016 GitHub, Inc. Terms Privacy Security Contact Help
+
+as you commented i have made changes to y file so please review the code again and get updated with the changes..
