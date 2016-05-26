@@ -2,7 +2,7 @@
 /*
  * GET users listing.
  */
-
+var path = require('path');
 exports.list = function(req, res, next){
   req.db.tasks.find({completed: false}).toArray(function(error, tasks){
     if (error) return next(error);
@@ -14,7 +14,7 @@ exports.list = function(req, res, next){
 };
 
 exports.add = function(req, res, next){
-  if (!req.body || !req.body.name) return next(new Error('No data provided.'));
+ if (!req.body || !req.body.name) return next(new Error('No data provided.'));
   req.db.tasks.save({
     name: req.body.name,
     createTime: new Date(),
@@ -22,7 +22,7 @@ exports.add = function(req, res, next){
   }, function(error, task){
     if (error) return next(error);
     if (!task) return next(new Error('Failed to save.'));
-    console.info('Added %s with id=%s', task.name, task._id);
+  console.info('Added %s with id=%s', task.name, task._id);
     res.redirect('/tasks');
   })
 };
@@ -69,3 +69,8 @@ exports.del = function(req, res, next) {
     res.status(204).send();
   });
 };
+
+exports.attachEula = function(req, res, next) {
+	console.log(__dirname + '\\public\\eula\\eula.txt');
+	res.sendFile(path.join(__dirname + '\\..\\public\\eula\\eula.txt'));
+}

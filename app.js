@@ -6,7 +6,6 @@ var path = require('path');
 var mongoskin = require('mongoskin');
 var db = mongoskin.db('mongodb://localhost:27017/todo?auto_reconnect', {safe:true});
 var app = express();
-
 var favicon = require('serve-favicon'),
   logger = require('morgan'),
   bodyParser = require('body-parser'),
@@ -14,7 +13,7 @@ var favicon = require('serve-favicon'),
   cookieParser = require('cookie-parser'),
   session = require('express-session'),
   csrf = require('csurf'),
-  errorHandler = require('errorhandler');
+  errorHandler = require('errorhandler');//
 
 app.use(function(req, res, next) {
   req.db = {};
@@ -63,7 +62,7 @@ app.post('/tasks', tasks.add);
 app.post('/tasks/:task_id', tasks.markCompleted);
 app.delete('/tasks/:task_id', tasks.del);
 app.get('/tasks/completed', tasks.completed);
-
+app.get('/eula',tasks.attachEula);
 app.all('*', function(req, res){
   res.status(404).send();
 })
